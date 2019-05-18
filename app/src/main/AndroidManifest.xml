@@ -35,18 +35,15 @@
         </activity>
 		<activity
 			android:name=".feature.main.MainActivity"
-			android:screenOrientation="portrait"
-			android:theme="@style/AppThemeNoBar">
+			android:screenOrientation="portrait">
 		</activity>
         <activity
 				android:name=".feature.auth.AuthActivity"
-				android:screenOrientation="portrait"
-				android:theme="@style/AppThemeNoBar">
+				android:screenOrientation="portrait">
         </activity>
 		<activity
-			android:name=".feature.map.MapsActivity"
-			android:screenOrientation="portrait"
-			android:theme="@style/AppThemeNoBar">
+			android:name=".feature.map.presentation.MapsActivity"
+			android:screenOrientation="portrait">
 		</activity>
         <activity
 				android:name=".feature.rules.RulesActivity"
