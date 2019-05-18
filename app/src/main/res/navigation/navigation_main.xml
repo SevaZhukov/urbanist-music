@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_main"
+    app:startDestination="@id/quests">
+
+    <fragment
+        android:id="@+id/quests"
+        android:name="com.urbanist.music.feature.quests.QuestsFragment"
+        android:label="QuestsFragment" />
+    <fragment
+        android:id="@+id/events"
+        android:name="com.urbanist.music.feature.events.EventsFragment"
+        android:label="EventsFragment" />
+    <fragment
+        android:id="@+id/map"
+        android:name="com.urbanist.music.feature.map.presentation.MapFragment"
+        android:label="MapFragment" />
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.urbanist.music.feature.profile.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>
