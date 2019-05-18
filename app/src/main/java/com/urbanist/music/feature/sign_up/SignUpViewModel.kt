@@ -28,6 +28,7 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
 
     interface EventsListener {
         fun showMessage(message: String)
+        fun routeToMain()
     }
 
     init {
@@ -72,5 +73,7 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
         if (pop.value!!) genres.add(Fields.POP.title)
         if (rock.value!!) genres.add(Fields.ROCK.title)
         preferenceRepository.createBasker(name.value!!, props.value!!, instruments, genres)
+        preferenceRepository.setRole(PreferenceRepository.ROLE_NAME_BUSKER)
+        eventsListener.routeToMain()
     }
 }
