@@ -69,4 +69,5 @@ dependencies {
 
     //okhttp3
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 }
