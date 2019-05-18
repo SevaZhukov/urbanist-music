@@ -16,5 +16,7 @@
     <color name="onboard_4">#f6a860</color>
     <color name="onboard_5">#d690c3</color>
 
-
+    <color name="main">#771b8c</color>
+    <color name="blue">#135361</color>
+    <color name="violet">#611558</color>
 </resources>
