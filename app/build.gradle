@@ -71,6 +71,12 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
     implementation 'com.google.android.gms:play-services-location:16.0.0'
 
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-storage:17.0.0'
+    implementation 'com.google.firebase:firebase-auth:17.0.0'
+    implementation 'com.google.firebase:firebase-firestore:19.0.0'
+
     implementation 'android.arch.navigation:navigation-ui:1.0.0'
     implementation 'android.arch.navigation:navigation-fragment:1.0.0'
 }
