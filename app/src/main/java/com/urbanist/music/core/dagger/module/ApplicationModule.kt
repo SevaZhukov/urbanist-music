@@ -5,7 +5,7 @@ import com.urbanist.music.core.network.RetrofitModule
 import com.urbanist.music.feature.auth.AuthActivity
 import com.urbanist.music.feature.firebase.di.FireBaseModule
 import com.urbanist.music.feature.map.di.MapModule
-import com.urbanist.music.feature.map.presentation.MapsActivity
+import com.urbanist.music.feature.map.presentation.MapFragment
 import com.urbanist.music.feature.report.ReportActivity
 import com.urbanist.music.feature.report.di.ReportNetworkModule
 import com.urbanist.music.feature.sign_up.SignUpActivity
@@ -44,4 +44,8 @@ interface ApplicationModule {
     @ActivityScope
     @ContributesAndroidInjector
     fun splashActivityInjector(): SplashActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector(modules = [MapModule::class])
+    fun mapFragmentInjector(): MapFragment
 }
