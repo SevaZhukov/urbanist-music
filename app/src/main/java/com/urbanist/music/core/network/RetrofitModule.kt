@@ -2,6 +2,7 @@ package com.urbanist.music.core.network
 
 import android.content.Context
 import com.urbanist.music.BuildConfig
+import com.urbanist.music.core.dagger.scope.ActivityScope
 import com.urbanist.music.core.domain.PreferenceRepository
 import dagger.Module
 import dagger.Provides
@@ -37,8 +38,4 @@ class RetrofitModule {
 		interceptor.level = HttpLoggingInterceptor.Level.BODY
 		return interceptor
 	}
-
-	@Provides
-	@Singleton
-	fun preferenceRetrofit(context: Context): PreferenceRepository = PreferenceRepository(context)
 }
