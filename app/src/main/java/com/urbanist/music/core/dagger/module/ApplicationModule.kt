@@ -38,10 +38,6 @@ interface ApplicationModule {
     fun authActivityInjector(): AuthActivity
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [MapModule::class])
-    fun mapsActivityInjector(): MapsActivity
-
-    @ActivityScope
     @ContributesAndroidInjector
     fun splashActivityInjector(): SplashActivity
 
