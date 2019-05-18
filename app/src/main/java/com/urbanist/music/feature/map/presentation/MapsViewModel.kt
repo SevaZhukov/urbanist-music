@@ -1,37 +1,31 @@
 package com.urbanist.music.feature.map.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.urbanist.music.core.presentation.BaseViewModel
 import com.urbanist.music.feature.map.domain.Event
+import com.urbanist.music.feature.map.domain.GetEventsUseCase
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
-class MapsViewModel @Inject constructor() : BaseViewModel() {
+class MapsViewModel @Inject constructor(
+    private val getEventsUseCase: GetEventsUseCase
+) : BaseViewModel() {
 
     val liveData = MutableLiveData<List<Event>>()
 
     override fun onBind(state: Bundle?) {
         super.onBind(state)
 
-        liveData.value = generateData()
+        getEventsUseCase()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                liveData.value = it
+            }, {
+                Log.i("MapsViewModel", it.localizedMessage)
+            })
+            .addTo(disposables)
     }
-
-
-    private fun generateData(): List<Event> =
-        listOf(
-            Event(
-                "someId",
-                "Shrek",
-                55.02933883666992,
-                82.92640686035156,
-                listOf("Rock", "Rap")
-            ),
-            Event(
-                "someId",
-                "Shrek2",
-                54.02933883666992,
-                83.92640686035156,
-                listOf("Rock1", "Rap1")
-            )
-        )
 }
