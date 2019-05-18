@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="viewModel"
+			type="com.urbanist.music.feature.report.ReportViewModel"/>
+	</data>
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<ProgressBar
+				android:id="@+id/progressBar"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:visibility="gone"
+				style="?android:attr/progressBarStyle"/>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:gravity="center_horizontal">
+
+				<include
+					app:clickCallback="@{() -> viewModel.onPhotoClick(0)}"
+					app:image="@{viewModel.firstPhoto}"
+					android:id="@+id/firstPhoto"
+					layout="@layout/include_photo"
+					app:desc="@{@string/report_desc_1}"
+					app:icon="@{@drawable/ic_report_photo_1}"
+					tools:ignore="IncludeLayoutParam"/>
+
+				<include
+					app:clickCallback="@{() -> viewModel.onPhotoClick(1)}"
+					app:image="@{viewModel.secondPhoto}"
+					android:id="@+id/secondPhoto"
+					layout="@layout/include_photo"
+					app:desc="@{@string/report_desc_2}"
+					app:icon="@{@drawable/ic_report_photo_2}"
+					tools:ignore="IncludeLayoutParam"/>
+
+				<include
+					app:clickCallback="@{() -> viewModel.onPhotoClick(2)}"
+					app:image="@{viewModel.thirdPhoto}"
+					android:id="@+id/thirdPhoto"
+					layout="@layout/include_photo"
+					app:desc="@{@string/report_desc_3}"
+					app:icon="@{@drawable/ic_report_photo_3}"
+					tools:ignore="IncludeLayoutParam"/>
+
+				<com.google.android.material.textfield.TextInputLayout
+					android:id="@+id/textInputLayout"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="24dp"
+					android:layout_marginStart="24dp"
+					android:layout_marginTop="16dp">
+
+					<com.google.android.material.textfield.TextInputEditText
+						android:id="@+id/comment"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						style="@style/Urbanist.Text"
+						android:text="@={viewModel.comment}"
+						android:hint="@string/report_comment_field_hint"/>
+				</com.google.android.material.textfield.TextInputLayout>
+
+				<TextView
+					android:id="@+id/textView4"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginEnd="24dp"
+					android:layout_marginStart="24dp"
+					android:layout_marginTop="16dp"
+					style="@style/Urbanist.Text"
+					android:text="@string/report_text_auto_location"/>
+
+				<Button
+					android:id="@+id/sendButton"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginBottom="24dp"
+					android:layout_marginEnd="24dp"
+					android:layout_marginStart="24dp"
+					android:layout_marginTop="16dp"
+					android:text="@string/report_send_button_text"
+					android:onClick="@{() -> viewModel.onSendReportButtonClick()}"
+					android:enabled="@{viewModel.sendButtonEnable}"
+					android:background="@drawable/button_red_background"
+					style="@style/Urbanist.Button"/>
+			</LinearLayout>
+		</FrameLayout>
+	</ScrollView>
+</layout>

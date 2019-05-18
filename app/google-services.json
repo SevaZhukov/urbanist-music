@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "193340577246",
+    "firebase_url": "https://urbanist-a2fa8.firebaseio.com",
+    "project_id": "urbanist-a2fa8",
+    "storage_bucket": "urbanist-a2fa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193340577246:android:16dfb4d5b9dc0156",
+        "android_client_info": {
+          "package_name": "com.urbanist.parking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193340577246-sppsoi8etups4lrl23aibkpp6i6mosrp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.urbanist.parking",
+            "certificate_hash": "941f4ca8f1443a578fe7bd2608364ab03afb9cbc"
+          }
+        },
+        {
+          "client_id": "193340577246-cvf6dj154q12lva5vnk65ias79k42ro3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzMSO-1JIxBF3JbI9sh091QrtTD71OqIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193340577246-cvf6dj154q12lva5vnk65ias79k42ro3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/red</color>
+    <color name="colorPrimaryDark">@color/dark_red</color>
+    <color name="colorAccent">@color/red</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="red">#fa243a</color>
+    <color name="dark_red">#923737</color>
+    <color name="black">#111111</color>
+    <color name="grey">#818181</color>
+
+    <color name="onboard_1">#59a5db</color>
+    <color name="onboard_2">#77b676</color>
+    <color name="onboard_3">#49b4ad</color>
+    <color name="onboard_4">#f6a860</color>
+    <color name="onboard_5">#d690c3</color>
+
+
+</resources>

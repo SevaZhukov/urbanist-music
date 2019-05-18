@@ -1,0 +1,73 @@
+<resources>
+	<string name="app_name">Урбанист.Парковка</string>
+
+	<!-- RulesActivity -->
+	<string name="rules_title">Правила парковки</string>
+	<string name="rules">"Тротуар" - элемент дороги, предназначенный для движения пешеходов и примыкающий к проезжей
+        части или к велосипедной дорожке либо отделенный от них газоном.\n\n
+        Закон запрещает движение ТС по тротуарам, и ограничивает парковку на них.\n
+
+        <a href='https://pddmaster.ru/documents/koap/statya-12-19-narushenie-pravil-ostanovki-ili-stoyanki-transportnyx-sredstv'>
+            ч.3 ст.12.19 КоАП
+        </a>
+        \n\n
+        Согласно статье 12 ПДД автомобиль может быть задержан, если он был оставлен:\n
+        на тротуаре;\n
+        на трамвайных путях, или в тоннеле;\n
+        на пешеходном переходе или не дальше чем в 5 метрах от него;\n
+        возле мест остановки общественного транспорта или такси (до 15 м);\n
+        на местах стоянок, отведенных инвалидам;\n
+        при парковке вторым рядом;\n
+        на территории, ограниченной запрещающими стоянку знаками, при наличии таблички о работе эвакуатора.\n
+    </string>
+
+	<!-- RecommendationActivity -->
+	<string name="recommendation_title">Рекомендации по фото</string>
+	<string name="recommendation">Основные требования к доказательным материалам:\n\n
+        хорошее качество фото в ГИБДД сервис, чтобы четко было видно номера автомобиля, а также данные привязки к
+        местности (табличка с адресом, узнаваемый объект, например, магазин, детский сад, остановка общественного
+        транспорта);\n
+        на фотографии необходимо зафиксировать, что водителя в салоне нет, т.е. машина оставлена надолго;\n
+        необходим панорамный снимок, чтобы достоверно зафиксировать место парковки (тротуар, газон, место для инвалидов,
+        проезжая часть и так далее);\n
+    </string>
+
+	<!-- OnBoardingActivity -->
+	<string name="onboarding_title_1">Урбанист.Парковка</string>
+	<string name="onboarding_desc_1">приложение для фиксаций нарушений, связанных с незаконной парковкой</string>
+	<string name="onboarding_title_2">В ЧЕМ ПРОБЛЕМА?</string>
+	<string name="onboarding_desc_2">Незаконная парковка приводит к тому, что жители не могут в полной мере наслаждаться
+        прогулками по своим любимым местам.
+    </string>
+	<string name="onboarding_title_3">ТАК, И ЧТО?</string>
+	<string name="onboarding_desc_3">Если Вы видите автомобиль на тротуаре, то потратив всего минуту времени, Вы можете
+        сделать город лучше!
+    </string>
+	<string name="onboarding_title_4">ОГО, КАК?</string>
+	<string name="onboarding_desc_4">Нужно всего лишь сделать несколько фото (рекомендации по качеству и ракурсам внутри
+        приложения), используя наш сервис.
+    </string>
+	<string name="onboarding_title_5">И ЧТО ДАЛЬШЕ?</string>
+	<string name="onboarding_desc_5">Фотографии будут переданы в ГИБДД, и нарушитель будет привлечен к ответственности
+    </string>
+
+	<!-- ReportActivity -->
+	<string name="report_title">Создание отчета</string>
+	<string name="report_desc_1">Нажми, чтобы сделать первое фото</string>
+	<string name="report_desc_2">Нажми, чтобы сделать второе фото</string>
+	<string name="report_desc_3">Нажми, чтобы сделать третье фото</string>
+	<string name="report_text_auto_location">Местоположения нарушения определяется автоматически</string>
+	<string name="report_comment_field_hint">Комментарий</string>
+	<string name="report_send_button_text">Отправить</string>
+	<string name="report_success">Репорт успешно отправлен!</string>
+	<string name="report_error_location">Ошибка определения локации. Убедитесь, что определение локации включено</string>
+
+	<!-- MainActivity -->
+	<string name="main_button_send_report">Сообщить о нарушении</string>
+	<string name="main_button_rules">Правила парковки</string>
+	<string name="main_title">Урбанист.Парковка</string>
+
+	<!-- Dialog -->
+	<string name="dialog_loc_permission_desc">Для перехода к созданию отчета разрешите приложению определять вашу локацию в настройках приложения</string>
+	<string name="ok_button_text">OK</string>
+</resources>
