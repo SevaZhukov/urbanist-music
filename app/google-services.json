@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:193340577246:android:e08e57516dc70404",
+        "android_client_info": {
+          "package_name": "com.urbanist.music"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "193340577246-cvf6dj154q12lva5vnk65ias79k42ro3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzMSO-1JIxBF3JbI9sh091QrtTD71OqIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "193340577246-cvf6dj154q12lva5vnk65ias79k42ro3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:193340577246:android:16dfb4d5b9dc0156",
         "android_client_info": {
           "package_name": "com.urbanist.parking"
