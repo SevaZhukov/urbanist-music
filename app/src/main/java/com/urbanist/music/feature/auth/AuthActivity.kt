@@ -27,7 +27,7 @@ class AuthActivity: AppCompatActivity() {
     }
 
     private fun routeToAuth() {
-        val intent = Intent(this, SignUpActivity::class.java)
+        val intent = Intent(this,   SignUpActivity::class.java)
         startActivity(intent)
     }
 }
