@@ -33,10 +33,6 @@ class PreferenceRepository @Inject constructor(context: Context) {
         )
     }
 
-    fun setRole(role: String) {
-        preferences.edit().putString(ROLE_KEY, role).apply()
-    }
-
     companion object {
         const val ROLE_KEY = "role"
         const val NAME_KEY = "name"

@@ -8,7 +8,7 @@ import com.urbanist.music.core.pref.Fields
 import com.urbanist.music.core.presentation.BaseViewModel
 import javax.inject.Inject
 
-class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRepository) : BaseViewModel() {
+class SignUpViewModel @Inject constructor() : BaseViewModel() {
     lateinit var eventsListener: SignUpViewModel.EventsListener
 
     val name = MutableLiveData<String>()
@@ -28,20 +28,9 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
 
     interface EventsListener {
         fun showMessage(message: String)
-        fun routeToMain()
     }
 
     init {
-        name.value = ""
-        props.value = ""
-        strings.value = false
-        drums.value = false
-        wind.value = false
-        folks.value = false
-        strings.value = false
-        classic.value = false
-        jazz.value = false
-        pop.value = false
         rock.value = false
     }
 
@@ -72,8 +61,5 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
         if (jazz.value!!) genres.add(Fields.JAZZ.title)
         if (pop.value!!) genres.add(Fields.POP.title)
         if (rock.value!!) genres.add(Fields.ROCK.title)
-        preferenceRepository.createBasker(name.value!!, props.value!!, instruments, genres)
-        preferenceRepository.setRole(PreferenceRepository.ROLE_NAME_BUSKER)
-        eventsListener.routeToMain()
     }
 }
