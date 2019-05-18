@@ -2,18 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/events"
-        android:icon="@drawable/ic_events"
         android:title="События" />
     <item
         android:id="@+id/map"
-        android:icon="@drawable/ic_map"
         android:title="Карта" />
     <item
         android:id="@+id/quests"
-        android:icon="@drawable/ic_quests"
         android:title="Квесты" />
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_user"
         android:title="Профиль" />
 </menu>
