@@ -1,5 +1,6 @@
 package com.urbanist.music.feature.main.location_denied
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
@@ -14,7 +15,7 @@ class LocationDeniedDialog(context: Context) : Dialog(context) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE)
 		setContentView(R.layout.dialog_denied_permission_loc)
 		button.setOnClickListener {
-			dismiss()
+			(context as Activity).finish()
 		}
 	}
 }

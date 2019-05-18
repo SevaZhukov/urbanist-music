@@ -11,4 +11,8 @@ class App : DaggerApplication() {
             .builder()
             .context(this)
             .create(this)
+
+    override fun onCreate() {
+        super.onCreate()
+    }
 }
