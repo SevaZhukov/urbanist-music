@@ -12,6 +12,8 @@ class AuthActivity: AppCompatActivity() {
         buttonUrbanist.setOnClickListener {
 
         }
+        buttonBusker.setOnClickListener {
 
+        }
     }
 }
