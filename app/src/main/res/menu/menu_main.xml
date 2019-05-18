@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/events"
+        android:title="События" />
+    <item
+        android:id="@+id/map"
+        android:title="Карта" />
+    <item
+        android:id="@+id/quests"
+        android:title="Квесты" />
+    <item
+        android:id="@+id/profile"
+        android:title="Профиль" />
+</menu>
