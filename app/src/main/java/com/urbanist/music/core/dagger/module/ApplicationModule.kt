@@ -2,6 +2,7 @@ package com.urbanist.music.core.dagger.module
 
 import com.urbanist.music.core.dagger.scope.ActivityScope
 import com.urbanist.music.core.network.RetrofitModule
+import com.urbanist.music.feature.auth.AuthActivity
 import com.urbanist.music.feature.firebase.di.FireBaseModule
 import com.urbanist.music.feature.map.di.MapModule
 import com.urbanist.music.feature.map.presentation.MapsActivity
@@ -31,6 +32,10 @@ interface ApplicationModule {
     @ActivityScope
     @ContributesAndroidInjector
     fun signUpActivityInjector(): SignUpActivity
+
+    @ActivityScope
+    @ContributesAndroidInjector
+    fun authActivityInjector(): AuthActivity
 
     @ActivityScope
     @ContributesAndroidInjector(modules = [MapModule::class])
