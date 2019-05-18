@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.urbanist.music.R
 import com.urbanist.music.feature.main.MainActivity
+import com.urbanist.music.feature.sign_up.SignUpActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity: AppCompatActivity() {
@@ -15,7 +16,7 @@ class AuthActivity: AppCompatActivity() {
             routeToMain()
         }
         buttonBusker.setOnClickListener {
-
+            routeToAuth()
         }
     }
 
@@ -26,6 +27,7 @@ class AuthActivity: AppCompatActivity() {
     }
 
     private fun routeToAuth() {
-
+        val intent = Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
     }
 }
