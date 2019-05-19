@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/quests"
-        android:name="com.urbanist.music.feature.quests.QuestsFragment"
+        android:name="com.urbanist.music.feature.quests.presentation.QuestsFragment"
         android:label="QuestsFragment" />
     <fragment
         android:id="@+id/events"

@@ -8,3 +8,8 @@ import androidx.databinding.BindingAdapter
 fun loadImage(iv: ImageView, bitmap: Bitmap?) {
 	iv.setImageBitmap(bitmap)
 }
+
+@BindingAdapter("src")
+fun setImageViewResource(imageView: ImageView, resource: Int) {
+	imageView.setImageResource(resource)
+}
