@@ -15,6 +15,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -107,10 +108,15 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                 list.forEach {
                     markers.add(
                         googleMap.addMarker(
-                            MarkerOptions()
-                                .position(LatLng(it.latitude, it.longitude))
-                                .title(it.name)
-                                .snippet(getFormattedGenres(it.genres))
+                            when (it.genres[0]) {
+                                "рок" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
+                                "джаз" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
+                                "этно" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
+                                "поп" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
+                                else -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
+                            }
+
+
                         )
                     )
                     val adapter = CustomInfoWindowAdapter(activity!!, it)
@@ -118,6 +124,11 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                 }
             })
     }
+
+    private fun defaultMarker(event: Event) = MarkerOptions()
+        .position(LatLng(event.latitude, event.longitude))
+        .title(event.name)
+        .snippet(getFormattedGenres(event.genres))
 
     private fun getFormattedGenres(genres: List<String>): String =
         genres
