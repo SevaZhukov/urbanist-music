@@ -11,12 +11,10 @@ import dagger.Module
 @Module
 interface MapModule {
 
-    @ActivityScope
     @Binds
     fun bindGetEventsUseCase(impl: GetEventsUseCaseImpl): GetEventsUseCase
 
 
-    @ActivityScope
     @Binds
     fun bindEventsRepository(impl: EventsRepositoryImpl): EventsRepository
 

@@ -24,7 +24,6 @@ class RetrofitModule {
 		.build()
 
 	@Provides
-	@Singleton
 	fun providesRetrofit(): Retrofit =
 		Retrofit.Builder()
 			.baseUrl(BuildConfig.BACKEND_ENDPOINT)

@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_quests.*
 import javax.inject.Inject
 
 class QuestsFragment: DaggerFragment() {
+
     @Inject
     lateinit var viewModel: QuestsViewModel
 
@@ -34,6 +35,7 @@ class QuestsFragment: DaggerFragment() {
         recycler.adapter = adapter
         recycler.layoutManager = layoutManager
         viewModel.onBind()
+
         viewModel.quests.observe(this, Observer {
             adapter.setData(it)
             progressBar2.visibility = View.GONE
