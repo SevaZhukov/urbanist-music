@@ -9,7 +9,7 @@ fun loadImage(iv: ImageView, bitmap: Bitmap?) {
 	iv.setImageBitmap(bitmap)
 }
 
-@BindingAdapter("src")
+@BindingAdapter("imageResource")
 fun setImageViewResource(imageView: ImageView, resource: Int) {
 	imageView.setImageResource(resource)
 }
