@@ -8,6 +8,6 @@ data class Event(
     val latitude: Double,
     val longitude: Double,
     val genres: List<String>,
-    val instruments: List<String>,
+    val instrument: List<String>,
     val props: String
 )

@@ -54,12 +54,12 @@ class EventsRepositoryImpl @Inject constructor(
         Event(
             name = documentSnapshot.getString("name") ?: "",
             buskerName = documentSnapshot.getString("buskerName") ?: "",
-            start = documentSnapshot.getLong("start")?.toLong() ?: 0,
-            end = documentSnapshot.getLong("end")?.toLong() ?: 0,
-            latitude = documentSnapshot.getString("latitude")?.toDouble() ?: 0.0,
-            longitude = documentSnapshot.getString("longitude")?.toDouble() ?: 0.0,
+            start = documentSnapshot.getLong("start") ?: 0,
+            end = documentSnapshot.getLong("end") ?: 0,
+            latitude = documentSnapshot.getDouble("latitude")?.toDouble() ?: 0.0,
+            longitude = documentSnapshot.getDouble("longitude")?.toDouble() ?: 0.0,
             genres = documentSnapshot.get("genres") as List<String>,
-            instruments = documentSnapshot.get("instrument") as List<String>,
+            instrument = documentSnapshot.get("instrument") as List<String>,
             props = documentSnapshot.getString("props") ?: ""
         )
 }
