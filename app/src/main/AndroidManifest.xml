@@ -39,9 +39,7 @@
         <activity
             android:name=".feature.auth.AuthActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".feature.map.presentation.MapsActivity"
-            android:screenOrientation="portrait" />
+        <activity android:name=".feature.create_event.CreateEventActivity" />
         <activity
             android:name=".feature.rules.RulesActivity"
             android:label="@string/main_button_rules"

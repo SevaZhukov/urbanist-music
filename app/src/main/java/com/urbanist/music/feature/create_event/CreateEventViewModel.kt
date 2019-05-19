@@ -1,16 +1,24 @@
-package com.urbanist.music.feature.sign_up
+package com.urbanist.music.feature.create_event
 
 import android.graphics.Bitmap
 import android.location.Location
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.firestore.FirebaseFirestore
 import com.urbanist.music.core.domain.PreferenceRepository
 import com.urbanist.music.core.pref.Fields
 import com.urbanist.music.core.presentation.BaseViewModel
+import com.urbanist.music.feature.map.domain.Event
+import com.urbanist.music.feature.map.domain.EventsRepository
+import com.urbanist.music.feature.map.domain.GetEventsUseCase
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
-class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRepository) : BaseViewModel() {
-    lateinit var eventsListener: SignUpViewModel.EventsListener
+class CreateEventViewModel @Inject constructor(
+    val preferenceRepository: PreferenceRepository,
+    val firestore: FirebaseFirestore
+) : BaseViewModel() {
+    lateinit var eventsListener: CreateEventViewModel.EventsListener
 
     val name = MutableLiveData<String>()
     val props = MutableLiveData<String>()
@@ -30,6 +38,7 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
     interface EventsListener {
         fun showMessage(message: String)
         fun routeToMain()
+        fun getLocation(): Location?
     }
 
     init {
@@ -75,6 +84,14 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
         if (rock.value!!) genres.add(Fields.ROCK.title)
         preferenceRepository.createBasker(name.value!!, props.value!!, instruments, genres)
         preferenceRepository.setRole(PreferenceRepository.ROLE_NAME_BUSKER)
-        eventsListener.routeToMain()
+        val busker = preferenceRepository.getBasker()
+        val location = eventsListener.getLocation()
+        busker.latitude = location?.latitude.toString()
+        busker.longitude = location?.longitude.toString()
+        firestore.collection("events")
+            .add(busker)
+            .addOnSuccessListener {
+                eventsListener.routeToMain()
+            }
     }
 }

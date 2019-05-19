@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.urbanist.music.R
 import com.urbanist.music.core.domain.PreferenceRepository
+import com.urbanist.music.feature.create_event.CreateEventActivity
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
@@ -67,7 +68,8 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                 View.GONE
             }
         floatingActionButton.setOnClickListener {
-
+            val intent = Intent(activity, CreateEventActivity::class.java)
+            startActivity(intent)
         }
         map.onCreate(savedInstanceState)
         map.onResume()

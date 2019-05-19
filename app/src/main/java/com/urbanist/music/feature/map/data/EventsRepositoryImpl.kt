@@ -10,7 +10,7 @@ import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
 class EventsRepositoryImpl @Inject constructor(
-    firestore: FirebaseFirestore
+    val firestore: FirebaseFirestore
 ) : EventsRepository {
 
     init {
