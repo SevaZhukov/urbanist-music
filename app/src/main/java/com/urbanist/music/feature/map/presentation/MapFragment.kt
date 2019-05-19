@@ -113,6 +113,8 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                                 .snippet(getFormattedGenres(it.genres))
                         )
                     )
+                    val adapter = CustomInfoWindowAdapter(activity!!, it)
+                    googleMap.setInfoWindowAdapter(adapter)
                 }
             })
     }
@@ -131,6 +133,8 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                 15F
             ), 2000, null
         )
+
+
 
         clickedMarker.showInfoWindow()
         return true
