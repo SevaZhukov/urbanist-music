@@ -113,6 +113,7 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                                     bitmapDescriptorFromVector(R.drawable.ic_rok)
                                 )
                                 "джаз" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_dzhaz_t))
+                                "этно" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_dzhaz_t))
                                 "поп" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_pop_t))
                                 "классика" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_klassika_t))
                                 else -> defaultMarker(it)
