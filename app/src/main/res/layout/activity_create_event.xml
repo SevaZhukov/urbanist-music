@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,12 +10,29 @@
             type="com.urbanist.music.feature.create_event.CreateEventViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Имя"
+                android:text="@={viewModel.name}" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:onClick="@{() -> viewModel.onSignUpClick()}"
@@ -43,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nameLayout"
+            android:id="@+id/titleLayout"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -54,11 +73,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Имя"
-                android:text="@={viewModel.name}" />
+                android:hint="Название события"
+                android:text="@={viewModel.title}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
