@@ -3,11 +3,12 @@ package com.urbanist.music.core.dagger.module
 import com.urbanist.music.core.dagger.scope.ActivityScope
 import com.urbanist.music.core.network.RetrofitModule
 import com.urbanist.music.feature.auth.AuthActivity
+import com.urbanist.music.feature.events.EventsFragment
 import com.urbanist.music.feature.firebase.di.FireBaseModule
 import com.urbanist.music.feature.map.di.MapModule
 import com.urbanist.music.feature.map.presentation.MapFragment
-import com.urbanist.music.feature.quests.presentation.QuestsFragment
 import com.urbanist.music.feature.quests.di.QuestsModule
+import com.urbanist.music.feature.quests.presentation.QuestsFragment
 import com.urbanist.music.feature.report.ReportActivity
 import com.urbanist.music.feature.report.di.ReportNetworkModule
 import com.urbanist.music.feature.sign_up.SignUpActivity
@@ -21,7 +22,8 @@ import dagger.android.support.AndroidSupportInjectionModule
         AndroidSupportInjectionModule::class,
         RetrofitModule::class,
         FireBaseModule::class,
-        PreferenceModule::class
+        PreferenceModule::class,
+        MapModule::class
     ]
 )
 interface ApplicationModule {
@@ -43,8 +45,12 @@ interface ApplicationModule {
     fun splashActivityInjector(): SplashActivity
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = [MapModule::class])
+    @ContributesAndroidInjector
     fun mapFragmentInjector(): MapFragment
+
+    @ActivityScope
+    @ContributesAndroidInjector
+    fun eventsFragmentInjector(): EventsFragment
 
     @ActivityScope
     @ContributesAndroidInjector(modules = [QuestsModule::class])

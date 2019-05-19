@@ -1,5 +1,6 @@
 package com.urbanist.music.feature.quests.presentation.list
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.urbanist.music.R
 import com.urbanist.music.core.pref.Fields
@@ -11,6 +12,8 @@ class QuestHolder(var binding: ItemQuestBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(quest: Quest) {
+
+        Log.d("firestorage1", "${quest.name}")
         val stringBuilder = StringBuilder()
         quest.instruments.forEach {
             stringBuilder.append("$it ")

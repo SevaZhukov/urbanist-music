@@ -8,7 +8,6 @@ import javax.inject.Singleton
 @Module
 class FireBaseModule {
 
-    @Singleton
     @Provides
     fun provideFireStorage(): FirebaseFirestore = FirebaseFirestore.getInstance()
 
