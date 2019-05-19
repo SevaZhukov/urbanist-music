@@ -2,11 +2,14 @@ package com.urbanist.music.feature.map.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
@@ -15,10 +18,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.urbanist.music.R
 import com.urbanist.music.core.domain.PreferenceRepository
 import com.urbanist.music.feature.create_event.CreateEventActivity
@@ -109,11 +109,13 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                     markers.add(
                         googleMap.addMarker(
                             when (it.genres[0]) {
-                                "рок" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
-                                "джаз" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
-                                "этно" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
-                                "поп" -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
-                                else -> defaultMarker(it).icon(BitmapDescriptorFactory.fromResource())
+                                "рок" -> defaultMarker(it).icon(
+                                    bitmapDescriptorFromVector(R.drawable.ic_rok)
+                                )
+                                "джаз" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_dzhaz_t))
+                                "поп" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_pop_t))
+                                "классика" -> defaultMarker(it).icon(bitmapDescriptorFromVector(R.drawable.ic_klassika_t))
+                                else -> defaultMarker(it)
                             }
 
 
@@ -123,6 +125,20 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                     googleMap.setInfoWindowAdapter(adapter)
                 }
             })
+    }
+
+    private fun bitmapDescriptorFromVector(vectorResId: Int): BitmapDescriptor {
+        val vectorDrawable = ContextCompat.getDrawable(context!!, vectorResId)
+        vectorDrawable?.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight())
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable!!.getIntrinsicWidth(),
+            vectorDrawable.getIntrinsicHeight(),
+            Bitmap.Config.ARGB_8888
+        )
+
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
     private fun defaultMarker(event: Event) = MarkerOptions()
