@@ -8,6 +8,7 @@ import com.urbanist.music.feature.events.EventsFragment
 import com.urbanist.music.feature.firebase.di.FireBaseModule
 import com.urbanist.music.feature.map.di.MapModule
 import com.urbanist.music.feature.map.presentation.MapFragment
+import com.urbanist.music.feature.profile.ProfileFragment
 import com.urbanist.music.feature.quests.di.QuestsModule
 import com.urbanist.music.feature.quests.presentation.QuestsFragment
 import com.urbanist.music.feature.report.ReportActivity
@@ -60,4 +61,8 @@ interface ApplicationModule {
     @ActivityScope
     @ContributesAndroidInjector(modules = [QuestsModule::class])
     fun questsFragmentInjector(): QuestsFragment
+
+    @ActivityScope
+    @ContributesAndroidInjector
+    fun prifileFragmentInjector(): ProfileFragment
 }
