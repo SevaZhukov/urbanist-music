@@ -7,15 +7,11 @@ import com.google.android.gms.maps.model.Marker
 import com.urbanist.music.R
 import com.urbanist.music.feature.map.domain.Event
 import kotlinx.android.synthetic.main.window_custom.view.*
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.widget.Toast
 
 
 class CustomInfoWindowAdapter(
     private val context: Activity,
-    private val it: Event
+    private val list: List<Event>
 ) : GoogleMap.InfoWindowAdapter {
     override fun getInfoWindow(marker: Marker?): View? {
         return null
@@ -23,11 +19,18 @@ class CustomInfoWindowAdapter(
 
     override fun getInfoContents(marker: Marker?): View {
         val v = context.layoutInflater.inflate(R.layout.window_custom, null)
-        v.name.text = it.name
-        v.nameBusker.text = it.buskerName
-        v.genres.text = getFormattedList(it.genres)
-        v.instruments.text = getFormattedList(it.instrument)
-        v.propsText.text = it.props
+        var event: Event? = null
+        list.forEach {
+            if(it.name == marker?.title) {
+                event = it
+                return@forEach
+            }
+        }
+        v.name.text = event!!.name
+        v.nameBusker.text = event!!.buskerName
+        v.genres.text = getFormattedList(event!!.genres)
+        v.instruments.text = getFormattedList(event!!.instrument)
+        v.propsText.text = event!!.props
         return v
     }
 

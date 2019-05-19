@@ -101,10 +101,11 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
 
         googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         googleMap.isMyLocationEnabled = true
-        googleMap.setOnMarkerClickListener(this)
-
         mapsViewModel.liveData
             .observe(this, Observer { list ->
+                googleMap.setOnMarkerClickListener(this)
+                val adapter = CustomInfoWindowAdapter(activity!!, list)
+                googleMap.setInfoWindowAdapter(adapter)
                 list.forEach {
                     markers.add(
                         googleMap.addMarker(
@@ -122,8 +123,6 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
 
                         )
                     )
-                    val adapter = CustomInfoWindowAdapter(activity!!, it)
-                    googleMap.setInfoWindowAdapter(adapter)
                 }
             })
     }
