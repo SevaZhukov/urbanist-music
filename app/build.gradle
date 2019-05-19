@@ -18,15 +18,19 @@ android {
         versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    androidExtensions {
+        experimental = true
+    }
     buildTypes {
         release {
             buildConfigField "String", "BACKEND_ENDPOINT", BACKEND_ENDPOINT_PROD
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             buildConfigField "String", "BACKEND_ENDPOINT", BACKEND_ENDPOINT_DEV
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -79,7 +83,4 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:17.0.0'
     implementation 'com.google.firebase:firebase-auth:17.0.0'
     implementation 'com.google.firebase:firebase-firestore:19.0.0'
-
-    implementation 'android.arch.navigation:navigation-ui:1.0.0'
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
 }
