@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_main"
-    app:startDestination="@id/events">
+            xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_main"
+            app:startDestination="@id/events">
 
     <fragment
-        android:id="@+id/quests"
-        android:name="com.urbanist.music.feature.quests.presentation.QuestsFragment"
-        android:label="QuestsFragment" />
+            android:id="@+id/quests"
+            android:name="com.urbanist.music.feature.quests.presentation.QuestsFragment"
+            android:label="QuestsFragment"/>
     <fragment
-        android:id="@+id/events"
-        android:name="com.urbanist.music.feature.events.EventsFragment"
-        android:label="EventsFragment" />
+            android:id="@+id/events"
+            android:name="com.urbanist.music.feature.events.EventsFragment"
+            android:label="EventsFragment">
+        <action
+                android:id="@+id/action_events_to_map"
+                app:destination="@+id/map">
+        </action>
+    </fragment>
+
     <fragment
-        android:id="@+id/map"
-        android:name="com.urbanist.music.feature.map.presentation.MapFragment"
-        android:label="MapFragment" />
+            android:id="@+id/map"
+            android:name="com.urbanist.music.feature.map.presentation.MapFragment"
+            android:label="MapFragment">
+    </fragment>
     <fragment
-        android:id="@+id/profile"
-        android:name="com.urbanist.music.feature.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+            android:id="@+id/profile"
+            android:name="com.urbanist.music.feature.profile.ProfileFragment"
+            android:label="ProfileFragment"/>
+
 </navigation>

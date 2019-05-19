@@ -14,7 +14,6 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -22,6 +21,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.urbanist.music.R
 import com.urbanist.music.core.domain.PreferenceRepository
 import com.urbanist.music.feature.create_event.CreateEventActivity
+import com.urbanist.music.feature.events.KEY_EVENT
+import com.urbanist.music.feature.map.domain.Event
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
@@ -42,6 +43,10 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
     private lateinit var googleMap: GoogleMap
 
     private lateinit var googleApiClient: GoogleApiClient
+
+    private var currentEvent: Event? = null
+
+    private val markers: ArrayList<Marker> = arrayListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,9 +76,16 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
             val intent = Intent(activity, CreateEventActivity::class.java)
             startActivity(intent)
         }
+
+        arguments?.let {
+            currentEvent = it.getParcelable(KEY_EVENT) as Event
+        }
+
         map.onCreate(savedInstanceState)
         map.onResume()
         map.getMapAsync(this)
+
+
 
         initViewModel()
     }
@@ -93,11 +105,13 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
         mapsViewModel.liveData
             .observe(this, Observer { list ->
                 list.forEach {
-                    googleMap.addMarker(
-                        MarkerOptions()
-                            .position(LatLng(it.latitude, it.longitude))
-                            .title(it.name)
-                            .snippet(getFormattedGenres(it.genres))
+                    markers.add(
+                        googleMap.addMarker(
+                            MarkerOptions()
+                                .position(LatLng(it.latitude, it.longitude))
+                                .title(it.name)
+                                .snippet(getFormattedGenres(it.genres))
+                        )
                     )
                 }
             })
@@ -143,8 +157,7 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
         override fun onLocationChanged(location: Location?) {
             currentLocation = location ?: return
 
-
-            if (isFirstLaunch) {
+            if (isFirstLaunch && currentEvent == null) {
                 googleMap.moveCamera(
                     CameraUpdateFactory.newLatLngZoom(
                         LatLng(
@@ -154,6 +167,24 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
                         15F
                     )
                 )
+                isFirstLaunch = false
+            }
+
+            if (isFirstLaunch && currentEvent != null) {
+                googleMap.moveCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(
+                            currentEvent!!.latitude,
+                            currentEvent!!.longitude
+                        ),
+                        15F
+                    )
+                ).also {
+                    markers.find {
+                        it.title == currentEvent!!.name
+                    }
+
+                }
 
                 isFirstLaunch = false
             }
