@@ -35,8 +35,8 @@ class EventsAdapter constructor(
         eventList.sortedBy {
 
             val location = Location("")
-            location.latitude = it.latitude
-            location.longitude = it.longitude
+            location.latitude = currentPosition.latitude
+            location.longitude = currentPosition.longitude
 
             val location2 = Location("")
             location2.latitude = it.latitude

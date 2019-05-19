@@ -54,7 +54,7 @@
 
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="@{event.dist}"
+                      android:text="@{String.valueOf(event.dist)}"
                       android:fontFamily="@font/gotham_pro_light"
                       android:textColor="@color/white"
                       android:layout_marginBottom="16dp"
