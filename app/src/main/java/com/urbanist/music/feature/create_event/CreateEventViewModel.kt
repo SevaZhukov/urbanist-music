@@ -1,17 +1,13 @@
 package com.urbanist.music.feature.create_event
 
-import android.graphics.Bitmap
 import android.location.Location
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.urbanist.music.core.domain.PreferenceRepository
 import com.urbanist.music.core.pref.Fields
 import com.urbanist.music.core.presentation.BaseViewModel
 import com.urbanist.music.feature.map.domain.Event
-import com.urbanist.music.feature.map.domain.EventsRepository
-import com.urbanist.music.feature.map.domain.GetEventsUseCase
-import io.reactivex.rxkotlin.addTo
+import java.util.*
 import javax.inject.Inject
 
 class CreateEventViewModel @Inject constructor(
@@ -21,6 +17,7 @@ class CreateEventViewModel @Inject constructor(
     lateinit var eventsListener: CreateEventViewModel.EventsListener
 
     val name = MutableLiveData<String>()
+    val title = MutableLiveData<String>()
     val props = MutableLiveData<String>()
     val strings = MutableLiveData<Boolean>()
     val drums = MutableLiveData<Boolean>()
@@ -42,17 +39,18 @@ class CreateEventViewModel @Inject constructor(
     }
 
     init {
-        name.value = ""
-        props.value = ""
-        strings.value = false
-        drums.value = false
-        wind.value = false
-        folks.value = false
-        strings.value = false
-        classic.value = false
-        jazz.value = false
-        pop.value = false
-        rock.value = false
+        val busker = preferenceRepository.getBasker()
+        name.value = busker.name
+        props.value = busker.props
+        title.value = ""
+        strings.value = busker.instruments?.contains(Fields.STRINGS.title) ?: false
+        drums.value = busker.instruments?.contains(Fields.DRUMS.title) ?: false
+        wind.value = busker.instruments?.contains(Fields.WIND.title) ?: false
+        folks.value = busker.instruments?.contains(Fields.FOLKS.title) ?: false
+        classic.value = busker.instruments?.contains(Fields.CLASSIC.title) ?: false
+        jazz.value = busker.instruments?.contains(Fields.JAZZ.title) ?: false
+        pop.value = busker.instruments?.contains(Fields.POP.title) ?: false
+        rock.value = busker.instruments?.contains(Fields.ROCK.title) ?: false
     }
 
     fun onSignUpClick() {
@@ -72,6 +70,10 @@ class CreateEventViewModel @Inject constructor(
             eventsListener.showMessage("Заполни реквизиты")
             return
         }
+        if (title.value.isNullOrEmpty() || title.value.isNullOrBlank()) {
+            eventsListener.showMessage("Заполни название события")
+            return
+        }
         val instruments = mutableSetOf<String>()
         val genres = mutableSetOf<String>()
         if (strings.value!!) instruments.add(Fields.STRINGS.title)
@@ -86,10 +88,19 @@ class CreateEventViewModel @Inject constructor(
         preferenceRepository.setRole(PreferenceRepository.ROLE_NAME_BUSKER)
         val busker = preferenceRepository.getBasker()
         val location = eventsListener.getLocation()
-        busker.latitude = location?.latitude.toString()
-        busker.longitude = location?.longitude.toString()
+        val event = Event(
+            title.value!!,
+            busker.name!!,
+            Date().time,
+            Date().time + 10800000,
+            location!!.latitude,
+            location.longitude,
+            busker.genres!!.toList(),
+            busker.instruments!!.toList(),
+            busker.props!!
+        )
         firestore.collection("events")
-            .add(busker)
+            .add(event)
             .addOnSuccessListener {
                 eventsListener.routeToMain()
             }

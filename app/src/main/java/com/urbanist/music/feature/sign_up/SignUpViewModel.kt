@@ -39,7 +39,6 @@ class SignUpViewModel @Inject constructor(val preferenceRepository: PreferenceRe
         drums.value = false
         wind.value = false
         folks.value = false
-        strings.value = false
         classic.value = false
         jazz.value = false
         pop.value = false
