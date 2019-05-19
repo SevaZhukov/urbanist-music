@@ -1,6 +1,7 @@
 package com.urbanist.music.feature.map.presentation
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.urbanist.music.R
+import com.urbanist.music.core.domain.PreferenceRepository
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_map.*
 import javax.inject.Inject
@@ -28,6 +30,9 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
 
     @Inject
     lateinit var mapsViewModel: MapsViewModel
+
+    @Inject
+    lateinit var preferenceRepository: PreferenceRepository
 
     private var isFirstLaunch: Boolean = true
 
@@ -52,9 +57,18 @@ class MapFragment : DaggerFragment(), OnMapReadyCallback, GoogleApiClient.Connec
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        floatingActionButton.visibility =
+            if (preferenceRepository.getRole() == PreferenceRepository.ROLE_NAME_BUSKER) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        floatingActionButton.setOnClickListener {
 
+        }
         map.onCreate(savedInstanceState)
         map.onResume()
         map.getMapAsync(this)
