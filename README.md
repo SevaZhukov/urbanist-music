@@ -15,10 +15,15 @@
 
 ## Как это было?
 
+Урбанист.Музыка был создан командой Урбанист за 24(!!!) часа на хакатоне Урбатон в Новосибирске 2019
 
 ## О нас
 Это приложение - часть большого проекта с кодовым названием “Урбанист”. Ждите новых сервисов, рассказывайте друзьям и обязательно рассказывайте нам о своих проблемах, связанных с городской средой - мы постараемся с ними справиться. Сделаем город лучше вместе!
 
 ## Другие наши севисы
 
-[<img src="https://drive.google.com/file/d/1f2uDgXOnyMnT2KnkHQhJxfnWeYEnU_C8/view?usp=sharing" width="200" />](https://play.google.com/store/apps/details?id=com.urbanist.parking)
+### Урбанист.Парковка
+
+Приложение для фиксаций нарушений, связанных с незаконной парковкой
+
+[<img src="https://play.google.com/intl/en/badges/images/generic/en_badge_web_generic.png" width="150" />](https://play.google.com/store/apps/details?id=com.urbanist.parking)
